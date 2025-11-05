@@ -6,7 +6,7 @@ interface Product {
   name: string;
   category: string;
   price: number;
-  quantity: number; // stock
+  quantity: number;
   image: string;
   description: string;
 }
@@ -40,7 +40,7 @@ export default function App() {
       image:
         "https://media.cnn.com/api/v1/images/stellar/prod/230308120048-underscored-galaxy-s23-ultra-camera-lead.jpg?c=original",
       description:
-        "Samsung’s Galaxy S23 features a sleek design, high-end performance, and excellent camera capabilities.",
+        "Samsung's Galaxy S23 features a sleek design, high-end performance, and excellent camera capabilities.",
     },
     {
       id: 3,
@@ -54,10 +54,51 @@ export default function App() {
         "Noise-cancelling earbuds with rich sound and seamless Apple ecosystem connectivity.",
     },
 
+    {
+      id: 9,
+      name: "Keychron K8 Pro Wireless Mechanical Keyboard",
+      category: "Keyboard",
+      price: 7999,
+      quantity: 8,
+      image: "https://cdn.shopify.com/s/files/1/0599/4977/7066/t/3/assets/keychronk8proqmkviawirelessmechanicalkeyboardformacwindowsosaprofilepbtkeycapspcbscrewinstabilizerwithhotswappablegaterongpromechanicalswitchcompatiblewithmxcherrypandakailhwithrgbbacklightaluminumframe-1645094681965-1657191021826_1200x.jpg?v=1657191023",
+      description: "A compact, hot-swappable mechanical keyboard with RGB lighting, Bluetooth, and aluminum frame.",
+    },
+
+    {
+      id: 10,
+      name: "ASUS ZenBook 14 OLED",
+      category: "Laptop",
+      price: 65000,
+      quantity: 6,
+      image: "https://laptopmedia.com/wp-content/uploads/2024/01/2-17-e1704539345950.jpg",
+      description: "A sleek and lightweight 14-inch laptop featuring an OLED display, Ryzen 7 processor, and long battery life — perfect for productivity and entertainment.",
+    },
+
+    {
+      id: 11,
+      name: "Anker PowerCore Essential 20,000mAh PD",
+      category: "Powerbank",
+      price: 5000,
+      quantity: 15,
+      image: "https://down-id.img.susercontent.com/file/sg-11134201-23020-niizv2r9banv4c",
+      description: "A high-capacity powerbank with 20W Power Delivery fast charging, dual USB ports, and premium matte finish for durability on the go.",
+    },
+    
+    {
+      id: 12,
+      name: "Logitech MX Master 3S",
+      category: "Mouse",
+      price: 4000,
+      quantity: 10,
+      image: "https://m.media-amazon.com/images/I/61ni3t1ryQL._AC_SL1500_.jpg",
+      description: "An advanced ergonomic wireless mouse with MagSpeed scrolling, customizable buttons, and silent clicks for precision and comfort.",
+    },
+
   ]);
 
   const [cart, setCart] = useState<CartItem[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const [showReceipt, setShowReceipt] = useState(false);
   const [receiptItems, setReceiptItems] = useState<CartItem[]>([]);
   const [expandedId, setExpandedId] = useState<number | null>(null);
@@ -71,7 +112,6 @@ export default function App() {
     description: "",
   });
 
-  // --- Add product
   const handleAddProduct = () => {
     if (!newProduct.name || !newProduct.price) return;
     const id = products.length + 1;
@@ -99,7 +139,6 @@ export default function App() {
     });
   };
 
-  // --- Add to cart
   const addToCart = (p: Product) => {
     const inCart = cart.find((c) => c.id === p.id)?.quantity || 0;
     const available = p.quantity - inCart;
@@ -119,7 +158,6 @@ export default function App() {
     });
   };
 
-  // --- Quantity Controls
   const increaseCartQty = (id: number) => {
     const prod = products.find((p) => p.id === id);
     if (!prod) return;
@@ -154,7 +192,6 @@ export default function App() {
 
   const total = cart.reduce((sum, i) => sum + i.price * i.quantity, 0);
 
-  // --- Buy Now: deduct stock
   const handleBuyNow = () => {
     if (cart.length === 0) {
       alert("Cart is empty.");
@@ -180,21 +217,21 @@ export default function App() {
     setShowReceipt(true);
   };
 
-  // --- Filter by search
-  const filteredProducts = products.filter(
-    (p) =>
+  const filteredProducts = products.filter((p) => {
+    const matchesSearch =
       p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      p.category.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+      p.category.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory =
+      selectedCategory === "All" || p.category === selectedCategory;
+    return matchesSearch && matchesCategory;
+  });
 
-  // --- Remove product
   const removeProduct = (id: number) => {
     if (confirm("Are you sure you want to remove this product?")) {
       setProducts((prev) => prev.filter((p) => p.id !== id));
     }
   };
 
-  // --- Toggle Details
   const toggleDetails = (id: number) => {
     setExpandedId(expandedId === id ? null : id);
   };
@@ -203,14 +240,28 @@ export default function App() {
     <div className="app">
       <h1>TECH STORE MANAGEMENT</h1>
 
-      {/* Tabs */}
       <div className="tabs">
         <button className="active">Product List</button>
         <button>Add New Product</button>
         <button>Category</button>
       </div>
 
-      {/* Search */}
+      <div className="category-filter">
+        <select
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
+        >
+          <option value="All">All Categories</option>
+          <option value="Phones">Phones</option>
+          <option value="Earphones">Earphones</option>
+          <option value="Powerbank">Powerbank</option>
+          <option value="Keyboard">Keyboard</option>
+          <option value="Mouse">Mouse</option>
+          <option value="Smartwatch">Smartwatch</option>
+          <option value="Laptop">Laptop</option>
+        </select>
+      </div>
+
       <div className="search-bar">
         <input
           type="text"
@@ -220,7 +271,6 @@ export default function App() {
         />
       </div>
 
-      {/* Product Table */}
       <table className="product-table">
         <thead>
           <tr>
@@ -229,7 +279,7 @@ export default function App() {
             <th>Category</th>
             <th>Price</th>
             <th>Stock</th>
-            <th>Subtotal (stock × price)</th>
+            <th>Subtotal</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -284,7 +334,6 @@ export default function App() {
         </tbody>
       </table>
 
-      {/* Cart Summary */}
       <div className="cart-summary">
         <h3>🛒 Cart Summary</h3>
         {cart.length === 0 ? (
@@ -342,7 +391,6 @@ export default function App() {
         )}
       </div>
 
-      {/* Add Product Form */}
       <div className="form-section">
         <h3>Add New Product</h3>
         <div className="form-grid">
@@ -406,7 +454,6 @@ export default function App() {
         </div>
       </div>
 
-      {/* Purchase Receipt */}
       {showReceipt && (
         <div className="receipt-modal">
           <div className="receipt-card">
