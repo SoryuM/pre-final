@@ -17,6 +17,7 @@ body {
   max-width: 1000px;
 }
 
+/* ================= HEADER ================= */
 h1 {
   color: #b37b4e;
   font-size: 28px;
@@ -25,21 +26,23 @@ h1 {
   letter-spacing: 0.5px;
 }
 
+/* ================= TABS ================= */
 .tabs {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
+  gap: 15px;
+  margin-bottom: 25px;
 }
 
 .tabs button {
   background: #f2e3d0;
   border: none;
-  padding: 8px 18px;
-  border-radius: 6px;
+  padding: 10px 22px;
+  border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
+  font-size: 14px;
 }
 
 .tabs button:hover {
@@ -49,64 +52,65 @@ h1 {
 .tabs button.active {
   background: #d7b892;
   color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
-/* Category Filter */
+/* ================= CATEGORY FILTER TAB ================= */
 .category-filter {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
 }
 
 .category-filter select {
   background-color: #f7eadb;
   border: 1px solid #d8c5a6;
-  padding: 10px 14px;
-  border-radius: 6px;
-  font-size: 14px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 15px;
   color: #000;
   outline: none;
 }
 
 .category-filter select:focus {
   border-color: #b37b4e;
-  box-shadow: 0 0 4px rgba(179, 123, 78, 0.3);
+  box-shadow: 0 0 5px rgba(179, 123, 78, 0.3);
 }
 
-/* Search Bar */
+/* ================= SEARCH BAR ================= */
 .search-bar {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .search-bar input {
   width: 60%;
-  padding: 10px 14px;
-  border-radius: 6px;
+  padding: 12px 16px;
+  border-radius: 8px;
   border: 1px solid #d2bfa2;
   outline: none;
-  font-size: 14px;
+  font-size: 15px;
   background: #fff;
   color: #000;
 }
 
 .search-bar input:focus {
   border-color: #b37b4e;
-  box-shadow: 0 0 4px rgba(179, 123, 78, 0.3);
+  box-shadow: 0 0 5px rgba(179, 123, 78, 0.3);
 }
 
-/* Product Table */
+/* ================= PRODUCT TABLE ================= */
 .product-table {
   width: 90%;
   border-collapse: collapse;
   background: #fffaf4;
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
 .product-table th {
@@ -115,12 +119,14 @@ h1 {
   text-align: center;
   padding: 12px;
   font-weight: 600;
+  font-size: 14px;
 }
 
 .product-table td {
   text-align: center;
   padding: 12px;
   border-bottom: 1px solid #eee;
+  font-size: 14px;
 }
 
 .product-img {
@@ -130,11 +136,10 @@ h1 {
   object-fit: cover;
 }
 
-/* Action Buttons */
+/* ================= ACTION BUTTONS ================= */
 .action-buttons {
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 8px;
 }
 
@@ -144,7 +149,7 @@ h1 {
 .out-btn {
   padding: 6px 12px;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
   font-weight: 500;
   font-size: 13px;
@@ -155,7 +160,6 @@ h1 {
   background-color: #e6b980;
   color: #fff;
 }
-
 .add-btn:hover {
   background-color: #d89a54;
 }
@@ -164,7 +168,6 @@ h1 {
   background-color: #f7eadb;
   color: #7b5a35;
 }
-
 .view-btn:hover {
   background-color: #eddcc6;
 }
@@ -173,7 +176,6 @@ h1 {
   background-color: #f6a79b;
   color: #fff;
 }
-
 .remove-btn:hover {
   background-color: #e68c7a;
 }
@@ -184,23 +186,23 @@ h1 {
   cursor: not-allowed;
 }
 
-/* Product Description */
+/* ================= DESCRIPTION ROW ================= */
 .detail-row td {
   background-color: #fff8f0;
   text-align: left;
-  padding: 12px 20px;
+  padding: 14px 20px;
+  font-size: 14px;
 }
 
 .product-description {
-  font-size: 14px;
   color: #444;
 }
 
-/* Cart Section */
+/* ================= CART SUMMARY ================= */
 .cart-summary {
   width: 90%;
   background: #fffaf4;
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 20px;
   margin-top: 25px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -209,18 +211,20 @@ h1 {
 .cart-summary h3 {
   text-align: center;
   color: #b37b4e;
-  margin-bottom: 10px;
+  font-size: 20px;
+  margin-bottom: 15px;
 }
 
 .cart-empty {
   text-align: center;
   color: #888;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .cart-table {
   width: 100%;
   border-collapse: collapse;
+  margin-bottom: 15px;
 }
 
 .cart-table th,
@@ -228,26 +232,26 @@ h1 {
   padding: 10px;
   text-align: center;
   border-bottom: 1px solid #eee;
+  font-size: 14px;
 }
 
 .qty-controls {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
 }
 
 .qty-controls button {
-  width: 25px;
-  height: 25px;
+  width: 26px;
+  height: 26px;
   background-color: #e6b980;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   color: #fff;
   font-weight: bold;
   cursor: pointer;
 }
-
 .qty-controls button:hover {
   background-color: #d89a54;
 }
@@ -256,32 +260,32 @@ h1 {
   background-color: #f6a79b;
   color: #fff;
   border: none;
-  border-radius: 4px;
-  padding: 5px 10px;
+  border-radius: 6px;
+  padding: 6px 10px;
   cursor: pointer;
 }
-
 .cart-action-btn:hover {
   background-color: #e68c7a;
 }
 
+/* ================= CART FOOTER ================= */
 .cart-footer {
   text-align: right;
-  margin-top: 10px;
 }
 
 .cart-total {
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  font-size: 16px;
 }
 
 .btn-clear,
 .btn-buy {
-  padding: 8px 14px;
+  padding: 8px 16px;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
-  margin-left: 8px;
+  margin-left: 10px;
   font-weight: 500;
 }
 
@@ -295,37 +299,37 @@ h1 {
   color: white;
 }
 
-/* Add Product Form */
+/* ================= ADD NEW PRODUCT ================= */
 .form-section {
   width: 90%;
   background: #fffaf4;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 25px;
+  border-radius: 12px;
   margin-top: 25px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .form-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
 }
 
 .form-grid input,
 .form-grid select {
   background-color: #f7eadb;
   border: 1px solid #d8c5a6;
-  padding: 10px 14px;
-  border-radius: 6px;
+  padding: 12px 16px;
+  border-radius: 8px;
   font-size: 14px;
-  outline: none;
   color: #000;
+  outline: none;
 }
 
 .form-grid input:focus,
 .form-grid select:focus {
   border-color: #b37b4e;
-  box-shadow: 0 0 4px rgba(179, 123, 78, 0.3);
+  box-shadow: 0 0 5px rgba(179, 123, 78, 0.3);
 }
 
 .add-product-btn {
@@ -333,21 +337,21 @@ h1 {
   background-color: #e6b980;
   color: white;
   border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
+  padding: 12px 16px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: 0.2s;
+  font-size: 14px;
+  font-weight: 600;
 }
-
 .add-product-btn:hover {
   background-color: #d89a54;
 }
 
-/* Receipt Modal */
+/* ================= RECEIPT MODAL ================= */
 .receipt-modal {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.35);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -356,14 +360,15 @@ h1 {
 .receipt-card {
   background: #fff;
   padding: 25px;
-  border-radius: 10px;
-  width: 400px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  width: 420px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
   text-align: center;
 }
 
 .receipt-total {
   font-weight: 600;
+  font-size: 16px;
   margin-top: 15px;
 }
 
@@ -371,17 +376,16 @@ h1 {
   background-color: #e6b980;
   color: white;
   border: none;
-  padding: 8px 12px;
-  border-radius: 5px;
+  padding: 10px 14px;
+  border-radius: 8px;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 15px;
 }
-
 .btn-close:hover {
   background-color: #d89a54;
 }
 
-/* Input Text Readability */
+/* ================= INPUT TEXT FIX ================= */
 input,
 select,
 textarea {
@@ -390,7 +394,6 @@ textarea {
 
 ::placeholder {
   color: #555;
-  opacity: 1;
 }
 
 input:-webkit-autofill {
