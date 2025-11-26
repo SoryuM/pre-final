@@ -1,60 +1,26 @@
-import { useState } from "react";
+import React from "react";
+import './AddProduct.css'
 
-interface Product {
-  id: number;
+interface NewProduct {
   name: string;
   category: string;
-  price: number;
-  quantity: number;
+  price: string;
+  quantity: string;
   image: string;
   description: string;
 }
 
 interface AddProductProps {
-  products: Product[];
-  setProducts: (products: Product[]) => void;
+  newProduct: NewProduct;
+  setNewProduct: React.Dispatch<React.SetStateAction<NewProduct>>;
+  handleAddProduct: () => void;
 }
 
-export default function AddProduct({ products, setProducts }: AddProductProps) {
-  const [newProduct, setNewProduct] = useState({
-    name: "",
-    category: "Phones",
-    price: "",
-    quantity: "",
-    image: "",
-    description: "",
-  });
-
-  const handleAddProduct = () => {
-    if (!newProduct.name || !newProduct.price) return;
-
-    const id = products.length + 1;
-
-    setProducts([
-      ...products,
-      {
-        id,
-        name: newProduct.name,
-        category: newProduct.category,
-        price: parseFloat(newProduct.price),
-        quantity: parseInt(newProduct.quantity) || 0,
-        image: newProduct.image || "https://via.placeholder.com/100",
-        description:
-          newProduct.description ||
-          `This ${newProduct.category.toLowerCase()} is designed for reliability.`,
-      },
-    ]);
-
-    setNewProduct({
-      name: "",
-      category: "Phones",
-      price: "",
-      quantity: "",
-      image: "",
-      description: "",
-    });
-  };
-
+export default function AddProduct({
+  newProduct,
+  setNewProduct,
+  handleAddProduct,
+}: AddProductProps) {
   return (
     <div className="form-section">
       <h3>Add New Product</h3>

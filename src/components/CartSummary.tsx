@@ -1,3 +1,5 @@
+import './CartSummary.css'
+
 interface CartItem {
   id: number;
   name: string;
