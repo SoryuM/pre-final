@@ -1,5 +1,3 @@
-import './CartSummary.css'
-
 interface CartItem {
   id: number;
   name: string;
@@ -90,10 +88,12 @@ export default function CartSummary({
         )}
       </div>
 
+      {/* RECEIPT MODAL */}
       {showReceipt && (
         <div className="receipt-modal">
           <div className="receipt-card">
             <h3>🧾 Purchase Receipt</h3>
+
             <table className="receipt-table">
               <thead>
                 <tr>
@@ -103,6 +103,7 @@ export default function CartSummary({
                   <th>Subtotal</th>
                 </tr>
               </thead>
+
               <tbody>
                 {receiptItems.map((item) => (
                   <tr key={item.id}>
@@ -114,10 +115,14 @@ export default function CartSummary({
                 ))}
               </tbody>
             </table>
+
             <p className="receipt-total">
-              Total: ₱{receiptItems.reduce((s, r) => s + r.price * r.quantity, 0).toFixed(2)}
+              Total: ₱
+              {receiptItems.reduce((s, r) => s + r.price * r.quantity, 0).toFixed(2)}
             </p>
+
             <p>Thank you for your purchase!</p>
+
             <button className="btn-close" onClick={() => setShowReceipt(false)}>
               Close
             </button>

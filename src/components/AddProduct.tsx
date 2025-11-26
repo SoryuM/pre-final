@@ -1,5 +1,4 @@
 import React from "react";
-import './AddProduct.css'
 
 interface NewProduct {
   name: string;

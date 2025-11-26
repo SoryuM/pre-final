@@ -1,5 +1,3 @@
-import './CategoryFilter.css'
-
 interface CategoryFilterProps {
   selectedCategory: string;
   setSelectedCategory: (category: string) => void;
